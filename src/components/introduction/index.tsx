@@ -3,19 +3,16 @@ import styled from 'styled-components';
 import SoftwareDeveloperImage from 'src/assets/images/software-developer.svg';
 import { FULL_NAME } from 'src/config';
 import PrimaryButton from 'src/components/primary-button';
+import { Column, Row } from '../grid';
 
 const Section = styled.section`
   background-color: #f5f5f5;
   padding: 2em;
 `;
 
-const Container = styled.div`
-  display: flex;
-`;
+const Container = styled(Row)``;
 
-const ImageContainer = styled.div`
-  flex: 1;
-`;
+const ImageContainer = styled.div``;
 
 const Image = styled.img`
   display: block;
@@ -25,8 +22,11 @@ const Image = styled.img`
 `;
 
 const BasicInfo = styled.div`
-  flex: 1;
   margin: 1em;
+
+  @media (max-width: 769px) {
+    text-align: center;
+  }
 `;
 
 const Greeting = styled.h4`
@@ -51,15 +51,19 @@ function Introduction(): JSX.Element {
   return (
     <Section>
       <Container>
-        <ImageContainer>
-          <Image src={SoftwareDeveloperImage} alt="Software Developer" />
-        </ImageContainer>
-        <BasicInfo>
-          <Greeting>Hello</Greeting>
-          <Name>I&apos;m {FULL_NAME}</Name>
-          <JobTitle>Full Stack Developer</JobTitle>
-          <HireMeButton>Hire me</HireMeButton>
-        </BasicInfo>
+        <Column mobile={12} medium={6}>
+          <ImageContainer>
+            <Image src={SoftwareDeveloperImage} alt="Software Developer" />
+          </ImageContainer>
+        </Column>
+        <Column mobile={12} medium={6}>
+          <BasicInfo>
+            <Greeting>Hello</Greeting>
+            <Name>I&apos;m {FULL_NAME}</Name>
+            <JobTitle>Full Stack Developer</JobTitle>
+            <HireMeButton>Hire me</HireMeButton>
+          </BasicInfo>
+        </Column>
       </Container>
     </Section>
   );
